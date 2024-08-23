@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ac-app-1
+  name: ac-app
   labels:
-    app: ac-app-1
+    app: ac-app
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: ac-app-1
+      app: ac-app
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -18,11 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app: ac-app-1
+        app: ac-app
     spec:
       containers:
-      - name: ac-app-1
-        image: ac-app-1:0.0.1
+      - name: ac-app
+        image: ac-app:0.0.1
         ports:
         - containerPort: 5000
         volumeMounts:
@@ -31,5 +31,5 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: ac-app-1
+          name: ac-app
 
